@@ -34,24 +34,6 @@ jobs:
 
 ```
 
-# EC2 Deploy CICD
-```bash
-
-jobs:
-    Deploy:
-        runs-on: self-hosted
-
-        steps:
-            - name: Checkout the home directory
-              run: |
-                cd /home/ubuntu/cicd-ostad
-                git pull
-                pm2 status
-                pm2 restart all
-                
-
-```
-
 # Test - 
 
 setup environment like local environment
@@ -77,6 +59,24 @@ setup environment like local environment
               run: npm run test
 
 
+
+```
+
+# EC2 Deploy CICD
+```bash
+
+jobs:
+    Deploy:
+        runs-on: self-hosted
+        needs: Test # first complete Test job then Deploy will run
+        steps:
+            - name: Checkout the home directory
+              run: |
+                cd /home/ubuntu/cicd-ostad
+                git pull
+                pm2 status
+                pm2 restart all
+                
 
 ```
 
