@@ -28,7 +28,7 @@ jobs:
         runs-on: self-hosted
 
         steps:
-            -name: Checkout the home directory
+            - name: Checkout the home directory
             run: |
-            cd /home/ubuntu/cicd-ostad
-            ls
+                cd /home/ubuntu/cicd-ostad
+                ls
