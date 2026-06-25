@@ -2,27 +2,57 @@
 
 This document explains the Continuous Integration and Continuous Deployment (CI/CD) pipeline implemented in this project.
 
+# Understand basic CICD
+```bash
+
+
+
+```
+
 ## Prerequisites
 
 Before setting up the CI/CD pipeline, ensure the following prerequisites are met on your self-hosted runner:
 
-### 1. Install PM2 Globally
+### 1. EC2 Configuration PM2
 ```bash
+sudo apt update
+sudo apt install curl wget gnupg
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+nvm --version
+
+nvm install node
+
+node -v
+
+npm install
+
+npm start
+
 # Install PM2 globally on the runner
 npm install -g pm2
 
 # Verify PM2 installation
 pm2 --version
+
+
+# go to repo settings -> Actions -> Runners
+# create new self-hosted runner
+# Follow github instractions
+
+# last instead of
+# Run it!
+$ ./run.cmd
+
+# this commend you may use below commend to run application after exit the ec2 terminal
+ 
+sudo ./svc.sh install
+sudo ./svc.sh start
+
 ```
 
-### 2. Configure PM2 Startup
-```bash
-# Generate and configure startup script
-pm2 startup
 
-# Follow the instructions output by the above command
-# It will provide a command to run with sudo
-```
 
 ## Overview
 
