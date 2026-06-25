@@ -52,6 +52,33 @@ jobs:
 
 ```
 
+# Test - 
+
+setup environment like local environment
+
+```bash
+
+    Test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Git clone
+              uses: actions/checkout@v2
+
+            - name: install the node
+              uses: actions/setup-node@v2
+              with:
+                node-version: '22'
+
+            - name: install packages
+              run: npm install
+
+            - name: Run the test
+              run: npm run test
+
+
+
+```
 
 
 ## Prerequisites
