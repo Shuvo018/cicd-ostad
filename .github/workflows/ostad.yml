@@ -23,3 +23,12 @@ jobs:
             # Open file and read the file
             - name: Open hello
               run: cat hello.txt
+    
+    Deploy:
+        runs-on: self-hosted
+
+        steps:
+            -name: Checkout the home directory
+            run: |
+            cd /home/ubuntu/cicd-ostad
+            ls
