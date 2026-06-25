@@ -46,7 +46,7 @@ jobs:
 
     Deploy:
         runs-on: self-hosted
-
+        needs: Test # first complete Test job then Deploy will run
         steps:
             - name: Checkout the home directory
               run: |
