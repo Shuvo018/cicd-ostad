@@ -34,6 +34,26 @@ jobs:
 
 ```
 
+# EC2 Deploy CICD
+```bash
+
+jobs:
+    Deploy:
+        runs-on: self-hosted
+
+        steps:
+            - name: Checkout the home directory
+              run: |
+                cd /home/ubuntu/cicd-ostad
+                git pull
+                pm2 status
+                pm2 restart all
+                
+
+```
+
+
+
 ## Prerequisites
 
 Before setting up the CI/CD pipeline, ensure the following prerequisites are met on your self-hosted runner:
