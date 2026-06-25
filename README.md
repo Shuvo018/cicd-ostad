@@ -5,7 +5,32 @@ This document explains the Continuous Integration and Continuous Deployment (CI/
 # Understand basic CICD
 ```bash
 
+name: CICD pipeline
 
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    print-hello:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3 # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+
+              # Just print Hello, world
+            - name: Print Hello
+              run: echo "Hello, World!"
+            
+            # Open file and read the file
+            - name: Open hello
+              run: cat hello.txt
+    
 
 ```
 
