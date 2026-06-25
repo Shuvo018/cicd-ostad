@@ -24,6 +24,26 @@ jobs:
             - name: Open hello
               run: cat hello.txt
     
+    
+    Test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Git clone
+              uses: actions/checkout@v2
+
+            - name: install the node
+              uses: actions/setup-node@v2
+              with:
+                node-version: '22'
+
+            - name: install packages
+              run: npm install
+
+            - name: Run the test
+              run: npm run test
+
+
     Deploy:
         runs-on: self-hosted
 
@@ -34,4 +54,4 @@ jobs:
                 git pull
                 pm2 status
                 pm2 restart all
-                
+
