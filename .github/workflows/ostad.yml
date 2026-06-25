@@ -29,6 +29,6 @@ jobs:
 
         steps:
             - name: Checkout the home directory
-            run: |
+              run: |
                 cd /home/ubuntu/cicd-ostad
                 ls
