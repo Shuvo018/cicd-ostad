@@ -16,8 +16,10 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v3 # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
 
+              # Just print Hello, world
             - name: Print Hello
               run: echo "Hello, World!"
             
+            # Open file and read the file
             - name: Open hello
               run: cat hello.txt
