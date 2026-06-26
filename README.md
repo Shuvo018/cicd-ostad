@@ -136,6 +136,8 @@ npm install -g pm2
 # Verify PM2 installation
 pm2 --version
 
+# run pm2
+pm2 start npm --name node-app -- start
 
 # go to repo settings -> Actions -> Runners
 # create new self-hosted runner
