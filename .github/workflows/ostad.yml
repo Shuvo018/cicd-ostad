@@ -44,14 +44,26 @@ jobs:
               run: npm run test
 
 
+    # Deploy:
+    #     runs-on: self-hosted
+    #     needs: Test # first complete Test job then Deploy will run
+    #     steps:
+    #         - name: Checkout the home directory
+    #           run: |
+    #             cd /home/ubuntu/cicd-ostad
+    #             git pull
+    #             pm2 status
+    #             pm2 restart all
     Deploy:
-        runs-on: self-hosted
-        needs: Test # first complete Test job then Deploy will run
+        runs-on: ubuntu-latest
+        needs: Test
         steps:
-            - name: Checkout the home directory
-              run: |
-                cd /home/ubuntu/cicd-ostad
-                git pull
-                pm2 status
-                pm2 restart all
-
+            - name: SSH into EC2
+              uses: appleboy/ssh-action@v1.0.3
+              with:
+                host: ${{ secrets.HOST }}
+                username: ${{ vars.USER }}
+                key: ${{ secrets.SSH_KEY }}
+                script: |
+                  sudo apt update && sudo apt install nginx -y
+                
