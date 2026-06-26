@@ -102,12 +102,42 @@ npm install
 
 npm start
 
+# setup nginx
+sudo apt install nginx -y
+
+cd /etc/nginx/sites-available/
+
+sudo rm default
+ sudo nano default
+server {
+    listen 80;
+    server_name yourdomain.com; # Replace with your actual domain or IP address
+
+    location / {
+        # The URL where your backend application is running
+        proxy_pass http://127.0.0.1:8000; 
+        
+        # Recommended proxy headers to forward client information
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+# test configuration
+sudo nginx -t
+
+sudo systemctl reload nginx
+
 # Install PM2 globally on the runner
 npm install -g pm2
 
 # Verify PM2 installation
 pm2 --version
 
+# run pm2
+pm2 start npm --name node-app -- start
 
 # go to repo settings -> Actions -> Runners
 # create new self-hosted runner
